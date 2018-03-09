@@ -1,0 +1,21 @@
+.app-login-wrap{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: lightcyan;
+  display: flex;
+  align-items: center;
+  .x-panel{
+    margin-top: -140px
+  }
+  .login-panel-footer{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .active{
+    color: lightcoral;
+  }
+}

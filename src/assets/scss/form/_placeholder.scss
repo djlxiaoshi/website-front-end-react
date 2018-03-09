@@ -1,0 +1,14 @@
+.-placeholder {
+  input::-webkit-input-placeholder{
+    font-size: 12px !important;
+  }
+  input:-moz-placeholder {/* Firefox 18- */
+    font-size: 12px !important;
+  }
+  input::-moz-placeholder{/* Firefox 19+ */
+    font-size: 12px !important;
+  }
+  input:-ms-input-placeholder {
+    font-size: 12px !important;
+  }
+}

@@ -1,18 +1,48 @@
+@import '../../../assets/scss/theme.scss';
+
 .app-sidebar{
   width: 200px;
   height: 100vh;
+  overflow: hidden;
   font-size: 14px;
-  .am-list-body{
-    height: 100%;
-    .am-list-content{
-      font-size: 16px;
-      a{
-        color: #797878 !important;
+  display: flex;
+  flex-direction: column;
+  background-color: $appSidebarBackColor;
+  .user-msg-wrap{
+    flex: 0 0 60px;
+    width: 100%;
+    background: lightgreen;
+    display: flex;
+    align-items: center;
+    .user-avatar{
+      margin-left: 20px;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      border-radius: 100%;
+      background-color: lightcoral;
+      img{
+        height: 40px;
       }
     }
+    .user-desc {
+      margin-left: 20px;
+      font-size: 12px;
+    }
   }
-  .icon-wrap{
-    display: inline-block;
-    padding-right: 10px;
+  .sidebar-menu{
+    flex: 1;
+    .am-list-body{
+      .am-list-content{
+        font-size: 16px;
+        a{
+          color: #797878 !important;
+        }
+      }
+    }
+    .icon-wrap{
+      display: inline-block;
+      padding-right: 10px;
+    }
   }
 }

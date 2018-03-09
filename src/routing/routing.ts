@@ -7,6 +7,7 @@ import About from '../pages/About/About';
 import Contact from '../pages/Contact/Contact';
 import Axios from '../pages/Axios/Axios';
 import Charts from '../pages/Charts/Charts';
+import Login from '../pages/Login/Login';
 
 interface Route {
   path: string;
@@ -22,5 +23,6 @@ export const routing: Route[] = [
   {path: '/contact' , name: '联系方式', component: Contact, icon: 'fa-phone'},
   {path: '/chart' , name: '图', component: Charts, icon: 'fa-chart-pie'},
   {path: '/axios' , name: '请求', component: Axios},
+  {path: '/login' , name: '登录', component: Login},
   {path: '/', redirect: true, to: 'home'}
 ];
