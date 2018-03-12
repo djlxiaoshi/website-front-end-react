@@ -35,4 +35,6 @@ class IziToastService {
   }
 }
 
-export default new IziToastService();
+const iziToastService = new IziToastService();
+
+export default iziToastService;

@@ -25,14 +25,18 @@ class FetchService {
         cancelToken: new CancelToken(function executor(c) {
           cancel = c;
         })
-      }).then(response => {
-        observer.next(response);
+      }).then(res => {
+        if (res.data.error_code === 0) {
+          observer.next(res.data);
+        } else {
+          observer.error(res.data);
+        }
         observer.complete();
       }).catch(error => {
-        observer.error(error);
         if (hasWarning) {
           iziToastService.error('Error', `${error.message}`);
         }
+        observer.error(error);
         observer.complete();
       });
 
@@ -46,8 +50,7 @@ class FetchService {
     let cancel;
     return Observable.create(observer => {
       const apiURL = this.getFullUrl(url);
-      axios.post(apiURL, {
-        params: params,
+      axios.post(apiURL, params, {
         headers: {
           // 'Content-Type': 'application/x-www-form-urlencoded'
         },
@@ -55,14 +58,18 @@ class FetchService {
         cancelToken: new CancelToken(function executor(c) {
           cancel = c;
         })
-      }).then(data => {
-        observer.next(data);
+      }).then(res => {
+        if (res.data.error_code === 0) {
+          observer.next(res.data);
+        } else {
+          observer.error(res.data);
+        }
         observer.complete();
       }).catch(error => {
-        observer.error(error);
         if (hasWarning) {
           iziToastService.error('Error', `${error.message}`);
         }
+        observer.error(error);
         observer.complete();
       });
 

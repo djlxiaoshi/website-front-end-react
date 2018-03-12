@@ -4,7 +4,9 @@
  */
 import React, { Component } from 'react';
 
-import { InputItem } from 'antd-mobile';
+import { InputItem, Button } from 'antd-mobile';
+
+import { withRouter } from 'react-router-dom';
 
 import './Login.css';
 
@@ -12,8 +14,14 @@ const classNames = require('classnames');
 
 import XPanel from '../../components/X-Panel/X-Panel';
 
+import fetchService from '../../core/services/fetch.service';
+import iziToastService from '../../core/services/izi-toast.service';
+
 interface LoginState {
   isLogin: boolean;
+  username?: string;
+  password?: string;
+  secondPsw?: string;
 }
 
 class Login extends Component<any, LoginState> {
@@ -37,6 +45,34 @@ class Login extends Component<any, LoginState> {
     }
   }
 
+  operate() {
+    if (this.state.isLogin) {
+      this.login();
+    } else {
+      this.register();
+    }
+  }
+
+  login() {
+    fetchService.get('/v1/users', {username: this.state.username, password: this.state.password}, true).subscribe(result => {
+      iziToastService.success('欢迎回来!');
+      this.props.history.push('/home');
+    });
+  }
+
+  register() {
+    fetchService.post('/v1/users', {
+      username: this.state.username,
+      password: this.state.password,
+      secondPsw: this.state.secondPsw
+    }, true).subscribe(result => {
+      iziToastService.success('注册成功!');
+      this.setState({
+        isLogin: true
+      });
+    });
+  }
+
   render() {
     const loginBtnClass = classNames({
       'login-btn': true,
@@ -58,22 +94,31 @@ class Login extends Component<any, LoginState> {
             {
               this.state.isLogin ?
               <div>
-                <InputItem placeholder="请输入邮箱" type="text" className="-placeholder"/>
-                <InputItem placeholder="请输入密码" type="password" className="-placeholder"/>
+                <InputItem placeholder="请输入邮箱" type="text" className="-placeholder" onChange={(value) => { this.setState({username: value}); }}/>
+                <InputItem placeholder="请输入密码" type="password" className="-placeholder" onChange={(value) => { this.setState({password: value}); }}/>
               </div>
                 :
               <div>
-                <InputItem placeholder="请输入邮箱" type="text" className="-placeholder"/>
-                <InputItem placeholder="请输入密码" type="password" className="-placeholder"/>
+                <InputItem placeholder="请输入邮箱" type="text" className="-placeholder" onChange={(value) => { this.setState({username: value}); }}/>
+                <InputItem placeholder="请输入密码" type="password" className="-placeholder" onChange={(value) => { this.setState({password: value}); }}/>
+                <InputItem placeholder="确认密码" type="password" className="-placeholder" onChange={(value) => { this.setState({secondPsw: value}); }}/>
               </div>
             }
 
+            <Button type="primary" onClick={() => { this.operate(); }}>{this.state.isLogin ? '登录' : '注册'}</Button>
+
           </XPanel.Body>
           <XPanel.Footer>
-            <p className="login-panel-footer">
-              <span className="forget-password">忘记密码</span>
-              <span className="register">还没有账号，点击注册吧</span>
-            </p>
+            {
+              this.state.isLogin ?
+                <p className="login-panel-footer">
+                  <span className="forget-password">忘记密码</span>
+                  <span className="register">还没有账号，点击注册吧</span>
+                </p> :
+                <p className="login-panel-footer">
+                  <span>已有账号直接<span>登录</span></span>
+                </p>
+            }
           </XPanel.Footer>
         </XPanel>
       </div>
@@ -81,4 +126,4 @@ class Login extends Component<any, LoginState> {
   }
 }
 
-export default Login;
+export default withRouter(Login);
