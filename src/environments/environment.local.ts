@@ -4,5 +4,5 @@
  */
 export const environment = {
     production: true,
-    apiUrl: '//local.server.com/'
+    apiUrl: '//website_server.com:3000'
 };

@@ -6,7 +6,7 @@
     "@types/react-dom": "16.0.4",
     "antd-mobile": "2.1.6",
     "axios": "0.18.0",
-    "classnames": "^2.2.5",
+    "classnames": "2.2.5",
     "echarts": "4.0.4",
     "font-awesome": "4.7.0",
     "izitoast": "1.2.0",
