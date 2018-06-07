@@ -3,12 +3,16 @@
  * @Date 2018/2/7 16:13
  */
 import React, { Component } from 'react';
+import './Main.css';
 
 import AppSidebar from './AppSidebar/AppSidebar';
 import AppHeader from './AppHeader/AppHeader';
 import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import { routing } from '../../routing/routing';
 import { Drawer } from 'antd-mobile';
+
+import { createStore } from 'redux';
+import reducer from '../../store/reducers/index';
 
 interface MainState {
     open: boolean;
@@ -21,12 +25,13 @@ class Main extends Component<any, MainState> {
     }
 
     componentWillMount() {
-        this.setState({
-            open: false
-        });
+      this.setState({
+          open: false
+      });
+      window['store'] = createStore(reducer);
     }
 
-    toogleDrower(status) {
+    toggleDrower(status) {
         this.setState({
             open: status
         });
@@ -51,15 +56,16 @@ class Main extends Component<any, MainState> {
                         position={'left'}
                         onOpenChange={(status) => { this.onOpenChange(status); }}
                     >
-                        <AppHeader toggleDrawer={(status) => { this.toogleDrower(status); }}/>
-
-                        <Switch>
+                        <AppHeader toggleDrawer={(status) => { this.toggleDrower(status); }}/>
+                        <div className={'app-body'}>
+                          <Switch>
                             {routing.map(route => {
-                                return route.redirect ?
-                                    <Redirect path={route.path} to={route.to} key={route.path}/> :
-                                    <Route path={route.path} component={route.component} key={route.path}/>;
+                              return route.redirect ?
+                                <Redirect path={route.path} to={route.to} key={route.path}/> :
+                                <Route path={route.path} component={route.component} key={route.path}/>;
                             })}
-                        </Switch>
+                          </Switch>
+                        </div>
                     </Drawer>
                 </Router>
             </React.Fragment>

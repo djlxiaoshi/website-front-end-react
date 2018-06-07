@@ -1,21 +1,21 @@
-.x-panel{
+.app-panel{
   margin: 10px;
   padding: 0 10px;
   width: 100%;
   border: 1px solid #dddddd;
   border-radius: 5px;
   background-color: #ffffff;
-  .x-panel-header{
+  .app-panel-header{
     padding: 10px;
     font-size: 14px;
     text-align: center;
     border-bottom: 1px solid #dddddd;
   }
-  .x-panel-body{
+  .app-panel-body{
     min-height: 60px;
     margin: 20px 0;
   }
-  .x-panel-footer{
+  .app-panel-footer{
     font-size: 12px;
   }
 }

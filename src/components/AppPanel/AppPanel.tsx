@@ -4,7 +4,7 @@
  */
 import React, { Component } from 'react';
 
-import './X-Panel.css';
+import './AppPanel.css';
 
 class Header extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="x-panel-header">
+      <div className="app-panel-header">
         {this.props.children}
       </div>
     );
@@ -27,7 +27,7 @@ class Body extends Component {
 
   render() {
     return (
-      <div className="x-panel-body">
+      <div className="app-panel-body">
         {this.props.children}
       </div>
     );
@@ -41,7 +41,7 @@ class Footer extends Component {
 
   render() {
     return (
-      <div className="x-panel-footer">
+      <div className="app-panel-footer">
         {this.props.children}
       </div>
     );
@@ -59,7 +59,7 @@ class XPanel extends Component {
 
   render() {
     return (
-      <div className="x-panel">
+      <div className="app-panel">
         {this.props.children}
       </div>
     );

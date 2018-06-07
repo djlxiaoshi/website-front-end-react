@@ -3,8 +3,8 @@
  * @Date 2018/2/8 17:32
  */
 import React, { Component } from 'react';
-
-import { ImagePicker, WingBlank } from 'antd-mobile';
+import { ImagePicker } from 'antd-mobile';
+import './About.css';
 
 interface AboutState {
   files?: Object[];
@@ -32,19 +32,20 @@ class About extends Component<any, AboutState> {
   render() {
     return (
       <React.Fragment>
-        <WingBlank>
-          <div className="avatar-wrap">
-            <ImagePicker
-              files={this.state.files}
-              onChange={(files) => { this.onChange(files); }}
-              multiple={false}
-            />
-          </div>
-          <div className="user-msg">
-            <p className="username">DJLXS</p>
-            <p className="desc">sdfgsdfg</p>
-          </div>
-        </WingBlank>
+        <div id="app-about-me">
+          <ul className={'user-msg'}>
+            <li className={'user-avatar'}>
+              <ImagePicker
+                files={this.state.files}
+                onChange={(files) => { this.onChange(files); }}
+                multiple={false}
+              />
+            </li>
+            <li><p className="username">DJLXS</p></li>
+            <li><p className="email">1281233206@qq.com</p></li>
+            <li><p className="desc">my name is johnli</p></li>
+          </ul>
+        </div>
       </React.Fragment>
     );
   }

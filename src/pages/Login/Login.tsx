@@ -12,7 +12,7 @@ import './Login.css';
 
 const classNames = require('classnames');
 
-import XPanel from '../../components/X-Panel/X-Panel';
+import AppPanel from '../../components/AppPanel/AppPanel';
 
 import fetchService from '../../core/services/fetch.service';
 import iziToastService from '../../core/services/izi-toast.service';
@@ -84,13 +84,14 @@ class Login extends Component<any, LoginState> {
     });
     return (
       <div className="app-login-wrap">
-        <XPanel>
-          <XPanel.Header>
+        <div className={'app-logo'}/>
+        <AppPanel>
+          <AppPanel.Header>
             <p onClick={(event) => {this.toggle(event); }}>
               <span className={loginBtnClass}>登录</span> | <span className={registerBtnClass}>注册</span>
             </p>
-          </XPanel.Header>
-          <XPanel.Body>
+          </AppPanel.Header>
+          <AppPanel.Body>
             {
               this.state.isLogin ?
               <div>
@@ -107,8 +108,8 @@ class Login extends Component<any, LoginState> {
 
             <Button type="primary" onClick={() => { this.operate(); }}>{this.state.isLogin ? '登录' : '注册'}</Button>
 
-          </XPanel.Body>
-          <XPanel.Footer>
+          </AppPanel.Body>
+          <AppPanel.Footer>
             {
               this.state.isLogin ?
                 <p className="login-panel-footer">
@@ -119,8 +120,8 @@ class Login extends Component<any, LoginState> {
                   <span>已有账号直接<span>登录</span></span>
                 </p>
             }
-          </XPanel.Footer>
-        </XPanel>
+          </AppPanel.Footer>
+        </AppPanel>
       </div>
     );
   }

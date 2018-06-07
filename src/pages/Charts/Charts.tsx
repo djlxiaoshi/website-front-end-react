@@ -3,7 +3,7 @@
  * @Date 2018/3/6 19:40
  */
 import React, { Component } from 'react';
-import XChart from '../../components/x-chart/XChart';
+import AppChart from '../../components/AppChart/AppChart';
 
 class Charts extends Component {
   chartOption;
@@ -32,7 +32,7 @@ class Charts extends Component {
   render() {
     return (
       <React.Fragment>
-        <XChart customOption={this.chartOption}/>
+        <AppChart customOption={this.chartOption}/>
       </React.Fragment>
     );
   }

@@ -1,3 +1,13 @@
-div{
-  background-color: lightgreen;
+#app-about-me {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  ul, li {
+    list-style: none;
+
+  }
+.user-msg{
+  width: 100%;
+  padding-left: 0;
+  }
 }

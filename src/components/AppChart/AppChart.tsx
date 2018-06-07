@@ -8,7 +8,7 @@ const utils = require('../../core/utils/utils');
 
 const echarts = require('echarts');
 
-import './XChart.css';
+import './AppChart.css';
 
 interface XChartProps {
   customOption?: object;
